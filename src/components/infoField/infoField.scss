@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+    color: #686461;
+    font-family: Lucida Sans Unicode,Lucida Grande,Sans-Serif;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr:nth-child(odd) {
+    background: #1eb6ee54;
+    border: 3px solid #fff;
+}
+
+th {
+    background: #1eb7ee;
+    border-bottom: 3px solid #fff;
+    color: #fff;
+    height: 70px;
+    padding: 5px;
+}
+
+td {
+    padding: 10px;
+}
+
+td, th {
+    text-align: center;
+}
+
+
+
+
+.terminal_A {
+    border-color: #63c745;
+    color: #63c745;
+}
+
+.airline {
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+    text-align: left;
+}
+
+.item-logo {
+    margin-right: 5px;
+    max-height: 40px;
+    max-width: 60px;
+}
