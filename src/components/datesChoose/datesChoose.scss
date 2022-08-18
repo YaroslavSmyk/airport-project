@@ -56,23 +56,23 @@
 }
 
 .search__clear {
-    position: relative;
-    top: -50px;
-    width: 100%;
+  position: relative;
+  top: -50px;
+  width: 100%;
 }
 
 .search__clear-right {
-    background: #1eb7ee;
-    border: 0.2rem solid;
-    border-radius: 25px 25px 0 0;
-    color: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 700;
-    min-height: 50px;
-    outline: none;
-    padding: 0 20px;
-    position: absolute;
-    right: 0;
-    transition: border-radius .5s;
+  background: #1eb7ee;
+  border: 0.2rem solid;
+  border-radius: 25px 25px 0 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  min-height: 50px;
+  outline: none;
+  padding: 0 20px;
+  position: absolute;
+  right: 0;
+  transition: border-radius 0.5s;
 }

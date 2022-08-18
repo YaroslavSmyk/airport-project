@@ -26,7 +26,7 @@ const InfoField = () => {
             Bees Airline
             <img
               className="item-logo"
-              //   src="https://api.iev.aero/media/airline/files/606aefa0c8a4a734421442.png"
+                src="https://api.iev.aero/media/airline/files/606aefa0c8a4a734421442.png"
               alt="logo"
             ></img>
           </td>

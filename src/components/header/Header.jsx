@@ -2,7 +2,7 @@ import React from 'react';
 import './header.scss'
 import Direction from '../direction/Direction'
 
-const header = () => {
+const Header = () => {
   return (
     <div className="page">
       <div className="search__header">SEARCH_FLIGHT KYIV Sykorsky Airport</div>
@@ -19,4 +19,4 @@ const header = () => {
   );
 };
 
-export default header;
+export default Header;
