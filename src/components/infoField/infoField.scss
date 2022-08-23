@@ -8,6 +8,7 @@ table {
   border-collapse: collapse;
   color: #686461;
   font-family: Lucida Sans Unicode, Lucida Grande, Sans-Serif;
+  width: 100%;
 }
 
 tbody {
@@ -16,10 +17,10 @@ tbody {
   border-color: inherit;
 }
 
-// tr:nth-child(odd) {
-//   background: #1eb6ee54;
-//   border: 3px solid #fff;
-// }
+tr:nth-child(odd) {
+  background: #1eb6ee54;
+  border: 3px solid #fff;
+}
 
 th {
   background: #1eb7ee;

@@ -28,7 +28,7 @@
   min-width: 200px;
   outline: none;
   padding: 0 10px 0 60px;
-  
+  // border: 0.5px solid black;
 }
 
 .search__btn {
@@ -44,4 +44,6 @@
   padding: 0 40px 0 10px;
   text-transform: uppercase;
   transition: border-radius 0.5s;
+  // border: 1px solid black;
+
 }

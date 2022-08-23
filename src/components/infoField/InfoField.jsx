@@ -2,6 +2,8 @@ import React from 'react';
 import './infoField.scss';
 
 const InfoField = () => {
+
+  
   return (
     <table className="table">
       <thead>
@@ -30,7 +32,7 @@ const InfoField = () => {
               alt="logo"
             ></img>
           </td>
-          <td className="td-hiden"></td>
+          <td className="td-hiden">Number flight</td>
         </tr>
       </tbody>
     </table>

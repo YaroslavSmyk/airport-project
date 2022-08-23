@@ -5,5 +5,6 @@ export const fetchFlyList = () => {
       if (res.ok) {
         return res.json();
       }
+      w
     });
   };
