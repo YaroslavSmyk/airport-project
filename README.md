@@ -1,5 +1,5 @@
 # airport-project
-
+You can find the project by link:
 ## https://sikorsky-airport.netlify.app/
 
 ## The tech stack is:
@@ -9,6 +9,7 @@
 ### [Sass (Scss)](https://sass-lang.com/)
 ### [BEM methodology](https://en.bem.info/methodology/)
 ### [React](https://reactjs.org/)
+### [Redux](https://redux.js.org/)
 
 ## Author
  Yaroslav Smyk
