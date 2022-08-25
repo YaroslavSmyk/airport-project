@@ -2,12 +2,13 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  
 }
 
-// .active {
-//     border-color: #1eb7ee;
-//     color: #1eb7ee;
-// }
+.active {
+    border-color: #1eb7ee;
+    color: #1eb7ee;
+}
 
 .button-direction {
   background: #1eb7ee;
@@ -20,4 +21,5 @@
   outline: none;
   text-align: center;
   width: 50%;
+  
 }
