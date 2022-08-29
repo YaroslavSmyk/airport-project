@@ -30,10 +30,6 @@ const DatesChoose = () => {
             <p>TOMORROW</p>
           </div>
         </div>
-        <div className="dates__title">01-02-2022</div>
-      </div>
-      <div className="search__clear">
-        <button className="search__clear-right">X</button>
       </div>
       <InfoField />
     </div>

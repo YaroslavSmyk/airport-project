@@ -18,16 +18,16 @@ tbody {
 }
 
 tr:nth-child(odd) {
-  background: #1eb6ee54;
-  border: 3px solid #fff;
+  background-color: rgba(0, 102, 135, 0.1);
 }
 
 th {
-  background: #1eb7ee;
-  border-bottom: 3px solid #fff;
-  color: #fff;
+  background: white;
+  // border-bottom: 3px solid #fff;
+  color: #b8b9b9;
   height: 70px;
   padding: 5px;
+  font-weight: 400;
 }
 
 td {
@@ -42,6 +42,9 @@ th {
 .terminal_A {
   border-color: #63c745;
   color: #63c745;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
 }
 
 .airline {

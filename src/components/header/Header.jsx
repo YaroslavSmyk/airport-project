@@ -5,7 +5,8 @@ import Direction from '../direction/Direction'
 const Header = () => {
   return (
     <div className="page">
-      <div className="search__header">SEARCH_FLIGHT KYIV Sykorsky Airport</div>
+      <title className='title'>KYIV Sykorsky Airport</title>
+      <div className="search__header">SEARCH FLIGHT</div>
       <div className="search">
         <i className="fas fa-search search__loop"></i>
         <input
