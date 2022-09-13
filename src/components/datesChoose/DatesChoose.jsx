@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './datesChoose.scss';
-import InfoField from '../infoField/InfoField';
+// import InfoField from '../infoField/InfoField';
+// import DatesChoose from '../datesChoose/DatesChoose';
 import moment from 'moment';
 
 const DatesChoose = () => {
@@ -31,7 +32,8 @@ const DatesChoose = () => {
           </div>
         </div>
       </div>
-      <InfoField />
+      {/* <DatesChoose /> */}
+      {/* <InfoField /> */}
     </div>
   );
 };

@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Switch, useLocation, useParams } from 'react-router-dom';
+import { fetchFlyList } from '../../gateway/getWay';
+// import { useParams } from "react-router-dom";
+// import DirectionButtonsction from '../direction/DirectionButtons';
 import './infoField.scss';
 
 const InfoField = () => {
+  const [flight, setFlight] = useState([]);
+
+  const { direction } = useParams();
+  console.log(direction);
+
+  const location = useLocation();
+  console.log(location);
+
+  const fet = () => {
+    fetchFlyList().then((list) => {
+      console.log(list);
+    });
+  };
+
+  useEffect(() => {
+    fet();
+  }, []);
 
   
+
   return (
     <table className="table">
       <thead>
@@ -28,7 +50,7 @@ const InfoField = () => {
             Bees Airline
             <img
               className="item-logo"
-                src="https://api.iev.aero/media/airline/files/606aefa0c8a4a734421442.png"
+              src="https://api.iev.aero/media/airline/files/606aefa0c8a4a734421442.png"
               alt="logo"
             ></img>
           </td>
