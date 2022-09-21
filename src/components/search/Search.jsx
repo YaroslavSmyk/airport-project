@@ -18,7 +18,7 @@ const Search = () => {
   const [dataSearch, setDataSearch] = useState(queryParams);
 
   const onHandleSearch = (event) => {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     event.preventDefault();
     setDataSearch(event.target.value);
   };

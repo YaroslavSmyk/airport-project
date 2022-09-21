@@ -9,13 +9,13 @@ import store from './store';
 const App = () => {
   return (
     <>
-      {/* <Provider store={store}> */}
+      <Provider store={store}>
       <BrowserRouter>
         <Header />
         <Search />
         <DirectionButtons />
       </BrowserRouter>
-      {/* </Provider> */}
+      </Provider>
     </>
   );
 };

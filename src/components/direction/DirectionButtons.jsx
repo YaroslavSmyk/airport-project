@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import DatesChoose from '../datesChoose/DatesChoose';
-import InfoField from '../infoField/InfoField';
+import Schedule from '../schedule/FlightsSchedule';
 import './directionButtons.scss';
 
 const DirectionButtons = () => {
@@ -26,7 +26,7 @@ const DirectionButtons = () => {
       </Link>
       <DatesChoose />
       <Routes>
-        <Route path="/:direction" element={<InfoField />} />
+        <Route path="/:direction" element={<Schedule />} />
       </Routes>
     </div>
   );
