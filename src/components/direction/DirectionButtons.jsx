@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import DatesChoose from '../datesChoose/DatesChoose';
-import Schedule from '../schedule/FlightsSchedule';
+import FlightsSchedule from '../schedule/FlightsSchedule';
 import './directionButtons.scss';
 
 const DirectionButtons = () => {
-  const { pathname, search } = useLocation();
+  // console.log(flightsList);
+  const { pathname } = useLocation();
+  // console.log('pathname', pathname)
 
   const departuresStylesBtn =
     pathname === '/departures' ? 'flights-board__btn_active' : '';
@@ -14,19 +16,19 @@ const DirectionButtons = () => {
 
   return (
     <div>
-      <Link to={`/departures${search}`}>
+      <Link to="/departures">
         <button className={`button-direction active ${departuresStylesBtn}`}>
-          Departure
+          Departures
         </button>
       </Link>
-      <Link to={`/arrivals${search}`}>
+      <Link to="arrivals">
         <button className={`button-direction ${arrivalsStylesBtn}`}>
           Arrivals
         </button>
       </Link>
       <DatesChoose />
       <Routes>
-        <Route path="/:direction" element={<Schedule />} />
+        <Route path="/:direction" element={<FlightsSchedule />} />
       </Routes>
     </div>
   );
