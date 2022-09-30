@@ -3,13 +3,6 @@ import moment from 'moment';
 
 export const flightsListSelector = (state) => state.flights;
 
-// export const arrivalFlightsSelector = (state) =>
-//   state.airportBoard.flights.arrival;
-
-// export const departureFlightsSelector = (state) =>
-//   state.airportBoard.flights.departure;
-
-
 export const filterListSelector = createSelector([flightsListSelector], flights =>
   flights.flightsList.filter(
     flight =>

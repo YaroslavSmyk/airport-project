@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import FlightsSchedule from '../schedule/FlightsSchedule';
 
 const FlightsInfo = ({ flight }) => {
   const [time, setTime] = useState({

@@ -5,20 +5,20 @@ import './flightsSchedule.scss';
 import * as flightsAction from '../../gateway/flights.actions';
 import { connect } from 'react-redux';
 import { filteredFlightsListSelector, filterListSelector } from '../../gateway/flights.selectors';
-import { arrivalFlightsSelector, departureFlightsSelector } from '../../gateway/flights.selectors';
+// import { arrivalFlightsSelector, departureFlightsSelector } from '../../gateway/flights.selectors';
 import PropTypes from 'prop-types';
 import FlightsInfo from '../flightsInfo/FlightsInfo';
 import moment from 'moment';
 
-
 const FlightsSchedule = ({ getFlightsList, flightsList, getFilteredFlightsList }) => {
   const { direction } = useParams();
-//   const updateDirection = direction.substring(0, direction.length-1)
-// console.log('updateDirection', updateDirection);
+  //   const updateDirection = direction.substring(0, direction.length-1)
+  // console.log('updateDirection', updateDirection);
   console.log('direction', direction);
   const search = useLocation();
   const querySearch = qs.parse(search.search, { ignoreQueryPrefix: true }).search;
 
+  
   console.log(flightsList);
   useEffect(() => {
     getFlightsList(direction);
@@ -27,8 +27,6 @@ const FlightsSchedule = ({ getFlightsList, flightsList, getFilteredFlightsList }
   useEffect(() => {
     getFilteredFlightsList(querySearch);
   }, [querySearch]);
-
-  console.log(flightsList);
 
   if (flightsList.length === 0) {
     return <h2 className="no-flights">No flights</h2>;
@@ -59,12 +57,11 @@ const FlightsSchedule = ({ getFlightsList, flightsList, getFilteredFlightsList }
       </tbody>
     </table>
   );
-          }
-
+};
 
 const mapState = state => ({
-  // flightsNumber: filterListSelector(state),
   flightsList: filteredFlightsListSelector(state),
+  flightsNumber: filterListSelector(state),
 });
 
 const mapDispatch = {
@@ -72,21 +69,10 @@ const mapDispatch = {
   getFilteredFlightsList: flightsAction.getFilteredFlightsList,
 };
 
-// const mapState = (state) => {
-//   return {
-//     arrivalFlights: arrivalFlightsSelector(state),
-//     departureFlights: departureFlightsSelector(state),
-//   };
-// };
-
-// const mapDispatch = {
-//   getFlightsList: flightsAction.getFlightsList,
-// };
-
-// FlightsSchedule.propTypes = {
-//   getFlightsList: PropTypes.func.isRequired,
-//   flightsList: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-//   getFilteredFlightsList: PropTypes.func.isRequired,
-// };
+FlightsSchedule.propTypes = {
+  getFlightsList: PropTypes.func.isRequired,
+  flightsList: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  getFilteredFlightsList: PropTypes.func.isRequired,
+};
 
 export default connect(mapState, mapDispatch)(FlightsSchedule);

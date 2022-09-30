@@ -23,9 +23,10 @@ export const getFilteredFlightsList = flightNumber => {
 
 export const getFlightsList = direction => {
   const thunkAction = function (dispatch) {
-    fetchFlightList().then(flightsList =>
-      dispatch(flightsListRecieved(flightsList.body[`${direction.slice(0, -1)}`])),
-    );
+    fetchFlightList().then(flightsList => {
+      console.log(flightsList);
+      dispatch(flightsListRecieved(flightsList.body[`${direction.slice(0, -1)}`]));
+    });
   };
   return thunkAction;
 };
