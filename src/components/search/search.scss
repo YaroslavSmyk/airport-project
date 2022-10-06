@@ -9,50 +9,54 @@
   margin-right: auto;
 }
 .search__header {
-    // background: #1eb7ee;
-    // border-radius: 30px 30px 0 0;
-    color: black;
-    font-size: 40px;
-    margin-top: 10px;
-    padding: 12px;
-    text-align: center;
-    margin-right: auto;
-    margin-left: -350px;
-    //   background: url(/images/main.jpg) no-repeat center bottom;
-  }
+  // background: #1eb7ee;
+  // border-radius: 30px 30px 0 0;
+  color: black;
+  font-size: 40px;
+  margin-top: 10px;
+  padding: 12px;
+  text-align: center;
+  margin-right: auto;
+  margin-left: -350px;
+  //   background: url(/images/main.jpg) no-repeat center bottom;
+}
 
-  .search__input {
-    border: none;
-    // border-radius: 0 0 0 25px;
-    flex: 1 1 auto;
-    font-size: 20px;
-    min-height: 40px;
-    min-width: 200px;
-    outline: none;
-    padding: -3px 10px 0 60px;
-    // border: 0.5px solid black;
-  }
+.search__input {
+  border: none;
+  // border-radius: 0 0 0 25px;
+  flex: 1 1 auto;
+  font-size: 20px;
+  min-height: 40px;
+  min-width: 200px;
+  outline: none;
+  padding: -3px 10px 0 60px;
+  // border: 0.5px solid black;
+}
 
-  .search__btn {
-    background: #1eb7ee;
-    border: 0.2rem solid;
-    border-radius: 0 25px 0 0;
-    color: #fff;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: 700;
-    min-height: 61px;
-    outline: none;
-    padding: 0 40px 0 10px;
-    text-transform: uppercase;
-    transition: border-radius 0.5s;
-    // border: 1px solid black;
-  }
-  .search__loop{
-    height: 60px;
-    width: 70px;
-    background: url(/src/components/images/glass.png)no-repeat center bottom;
-    background-color: #fff;
-    background-size: 48px;
-      background-position: center;
-  }
+.search__btn {
+  background: #1eb7ee;
+  border: 0.2rem solid;
+  border-radius: 0 60px 0 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
+  min-height: 61px;
+  outline: none;
+  padding: 0 40px 0 10px;
+  text-transform: uppercase;
+  transition: border-radius 0.5s;
+}
+
+.search__btn:hover {
+  border-radius: 0 25px 0 0;
+}
+
+.search__loop {
+  height: 60px;
+  width: 70px;
+  background: url(/src/components/images/glass.png) no-repeat center bottom;
+  background-color: #fff;
+  background-size: 48px;
+  background-position: center;
+}

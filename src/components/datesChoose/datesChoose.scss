@@ -12,9 +12,16 @@
 }
 
 .dates__input {
+  font-size: 60px;
+  width: 68px;
+  height: 60px;
   border: none;
-  margin-right: 40px;
-  padding: 0;
+  margin-top: 15px;
+  margin-right: 39px;
+  padding: 5px;
+  margin-left: -53px;
+  background: #1eb7ee;
+  // color:#fff;
 }
 
 .dates__days {
@@ -32,6 +39,12 @@
   padding: 20px 0px 55px;
   text-align: center;
   width: 100px;
+
+  &:hover{
+    color: #1eb7ee;
+  border-bottom: 3px solid #1eb7ee;
+
+  }
 }
 
 .dates__day-title {
@@ -54,6 +67,11 @@
   font-weight: 700;
   margin: 15px;
   padding: 15px;
+}
+.date-value {
+  font-weight: 700;
+  margin-left: 40px;
+  margin-top: -2px;
 }
 
 // .search__clear {

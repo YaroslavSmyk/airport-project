@@ -18,7 +18,6 @@ const Search = () => {
   const [dataSearch, setDataSearch] = useState(queryParams);
 
   const onHandleSearch = (event) => {
-    // console.log(event.target.value);
     event.preventDefault();
     setDataSearch(event.target.value);
   };
@@ -36,7 +35,7 @@ const Search = () => {
         <input
           type="text"
           className="search__input"
-          placeholder="Airline, destination or flight #"
+          placeholder="Flight #"
           value={dataSearch.value}
           onChange={onHandleSearch}
         ></input>

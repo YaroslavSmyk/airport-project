@@ -5,25 +5,22 @@ import FlightsSchedule from '../schedule/FlightsSchedule';
 import './directionButtons.scss';
 
 const DirectionButtons = () => {
-  // console.log(flightsList);
   const { pathname } = useLocation();
-  // console.log('pathname', pathname)
 
-  const departuresStylesBtn =
-    pathname === '/departures' ? 'flights-board__btn_active' : '';
-  const arrivalsStylesBtn =
-    pathname === '/arrivals' ? 'flights-board__btn_active' : '';
+  const departuresStylesBtn = pathname === '/departures' ? 'flights-board__btn_active' : '';
+  const arrivalsStylesBtn = pathname === '/arrivals' ? 'flights-board__btn_active' : '';
 
   return (
     <div>
       <Link to="/departures">
         <button className={`button-direction active ${departuresStylesBtn}`}>
-          Departures
-        </button>
+        <i className="fa-solid fa-plane flights-navigation__icon flights-navigation__icon_departures" />
+          Departures</button>
       </Link>
       <Link to="arrivals">
         <button className={`button-direction ${arrivalsStylesBtn}`}>
           Arrivals
+          <i className="fa-solid fa-plane flights-navigation__icon flights-navigation__icon_arrivals" />
         </button>
       </Link>
       <DatesChoose />

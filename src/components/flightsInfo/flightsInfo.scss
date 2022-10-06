@@ -1,41 +1,114 @@
-td {
-    width: 15%;
-    padding: 16px 10px;
-    text-align: center;
-  }
-  
-  tbody > tr:hover {
-    box-shadow: -4px 4px 10px 1px rgba(45, 48, 51, 0.5);
-  }
-  
-  .terminal {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    font-size: 22px;
-    line-height: 27px;
-    font-weight: 700;
-    border-radius: 50%;
-    border: 1px solid #52a23a;
-    color: #52a23a;
-  }
-  
-  .terminal-d {
-    border: 1px solid #1eb7ee;
-    color: #1eb7ee;
-  }
-  
-  .airline {
-    display: flex;
-    align-items: center;
-  
-    &__logo {
-      width: 30%;
-    }
-  
-    &__name {
+// td {
+//     width: 15%;
+//     padding: 16px 10px;
+//     text-align: center;
+//   }
+
+//   tbody > tr:hover {
+//     box-shadow: -4px 4px 10px 1px rgba(45, 48, 51, 0.5);
+//   }
+
+//   .terminal {
+//     display: inline-block;
+//     width: 30px;
+//     height: 30px;
+//     text-align: center;
+//     font-size: 22px;
+//     line-height: 27px;
+//     font-weight: 700;
+//     border-radius: 50%;
+//     border: 1px solid #52a23a;
+//     color: #52a23a;
+//   }
+
+//   .terminal-d {
+//     border: 1px solid #1eb7ee;
+//     color: #1eb7ee;
+//   }
+
+//   .airline {
+//     display: flex;
+//     align-items: center;
+
+//     &__logo {
+//       width: 30%;
+//     }
+
+//     &__name {
+//       text-align: center;
+//       margin-left: 10px;
+//     }
+//   }
+
+.table {
+  width: 100%;
+  background-color: #fff;
+  padding-top: 60px;
+  font-size: 18px;
+  border-collapse: collapse;
+
+  th {
+    color: #95989a;
+    height: 100px;
+    vertical-align: bottom;
+    padding-bottom: 15px;
+    text-align: start;
+
+    &:nth-child(1) {
       text-align: center;
-      margin-left: 10px;
     }
   }
+
+  td {
+    height: 75px;
+  }
+
+  .table-row {
+    height: 75px;
+
+    &:hover {
+      box-shadow: 0px 5px 15px 2px rgba(34, 60, 80, 0.5);
+    }
+
+    &:nth-child(odd) {
+      background-color: #e5eff3;
+
+      &:hover {
+        box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+      }
+    }
+
+    .table-cell {
+      text-align: center;
+    }
+
+    .company-field {
+      display: flex;
+      align-items: center;
+
+      img {
+        margin-right: 10px;
+      }
+    }
+
+    .terminal-name {
+      font-weight: 600;
+      border-radius: 50%;
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      line-height: 35px;
+      font-size: 22px;
+
+      &_green {
+        color: #63c745;
+        border: 1px solid #63c745;
+      }
+
+      &_blue {
+        color: #1eb7ee;
+        border: 1px solid #1eb7ee;
+      }
+    }
+  }
+}

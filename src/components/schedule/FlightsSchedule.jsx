@@ -5,20 +5,17 @@ import './flightsSchedule.scss';
 import * as flightsAction from '../../gateway/flights.actions';
 import { connect } from 'react-redux';
 import { filteredFlightsListSelector, filterListSelector } from '../../gateway/flights.selectors';
-// import { arrivalFlightsSelector, departureFlightsSelector } from '../../gateway/flights.selectors';
 import PropTypes from 'prop-types';
 import FlightsInfo from '../flightsInfo/FlightsInfo';
 import moment from 'moment';
 
 const FlightsSchedule = ({ getFlightsList, flightsList, getFilteredFlightsList }) => {
   const { direction } = useParams();
-  //   const updateDirection = direction.substring(0, direction.length-1)
-  // console.log('updateDirection', updateDirection);
+
   console.log('direction', direction);
   const search = useLocation();
   const querySearch = qs.parse(search.search, { ignoreQueryPrefix: true }).search;
 
-  
   console.log(flightsList);
   useEffect(() => {
     getFlightsList(direction);
@@ -41,33 +38,30 @@ const FlightsSchedule = ({ getFlightsList, flightsList, getFilteredFlightsList }
           <th>Destination</th>
           <th>Status</th>
           <th>Airline</th>
-          <th className="td-hiden">Flight</th>
+          <th>Flight</th>
         </tr>
       </thead>
       <tbody>
         {flightsList
-          .filter(
-            flight =>
-              moment(flight.timeToStand).format('DD-MM-YYYY') ===
-              moment(new Date()).format('DD-MM-YYYY'),
-          )
-          .map(flight => (
-            <FlightsInfo flight={flight} key={flight.ID} />
+          .slice()
+          .sort((a, b) => new Date(a.timeToStand) - new Date(b.timeToStand))
+          .map((flight) => (
+            <FlightsInfo key={flight.ID} flight={flight} />
           ))}
       </tbody>
     </table>
   );
 };
 
-const mapState = state => ({
-  flightsList: filteredFlightsListSelector(state),
-  flightsNumber: filterListSelector(state),
-});
-
 const mapDispatch = {
   getFlightsList: flightsAction.getFlightsList,
   getFilteredFlightsList: flightsAction.getFilteredFlightsList,
 };
+
+const mapState = state => ({
+  flightsNumber: filterListSelector(state),
+  flightsList: filteredFlightsListSelector(state),
+});
 
 FlightsSchedule.propTypes = {
   getFlightsList: PropTypes.func.isRequired,

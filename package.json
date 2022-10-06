@@ -42,14 +42,5 @@
     "react-router-dom": "^6.3.0",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/YaroslavSmyk/todo-list-react-redux.git"
-  },
-  "bugs": {
-    "url": "https://github.com/YaroslavSmyk/todo-list-react-redux/issues"
-  },
-  "homepage": "https://github.com/YaroslavSmyk/todo-list-react-redux#readme",
-  "description": ""
+  }
 }

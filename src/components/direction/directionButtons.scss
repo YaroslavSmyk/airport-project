@@ -1,14 +1,3 @@
-// * {
-//   box-sizing: border-box;
-//   margin: 0;
-//   padding: 0;
-  
-// }
-
-// .active {
-//     border-color: #1eb7ee;
-//     color: #1eb7ee;
-// }
 
 .button-direction {
   background: #1eb7ee;
@@ -21,13 +10,13 @@
   outline: none;
   text-align: center;
   width: 50%;
-  
+
+  &:hover {
+    transition: border-radius 0.5s;
+    border-radius: 20px 20px 0px 0px;
+  }
 }
 
-// .flights {
-//   width: 80%;
-//   margin: 30px auto;
-// }
 
 .flights-board {
   display: flex;
@@ -46,6 +35,8 @@
     text-decoration: none;
     cursor: pointer;
 
+
+
     &_icon {
       margin-right: 15px;
       font-size: 24px;
@@ -56,6 +47,9 @@
       background: #fff;
       z-index: 1;
     }
+    // &_active:hover {
+    // //   border-radius: 60px 25px 0 0;
+    // // }
 
     &:not(.flights-board__btn_active):hover {
       background: #1eb7ee;
@@ -74,4 +68,10 @@
     }
   }
 }
+
+// .flights-navigation__icon {
+//   width: 20px;
+//   height: 20px;
+//   color: black;
+// }
 
