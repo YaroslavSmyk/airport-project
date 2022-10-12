@@ -23,17 +23,17 @@ const DatesChoose = () => {
     setDate(event.target.closest('button').dataset.day);
     setSearchValue('');
   };
-  // console.log(dataset);
+  console.log(dataset);
 
-  // useEffect(() => {
-  //   fetchFlightList(date);
-  // }, [date]);
+  useEffect(() => {
+    fetchFlightList(date);
+  }, [date]);
 
-  // useEffect(() => {
-  //   navigate.push(
-  //     `/${direction}?date=${date}${searchValue ? `&search=${searchValue}` : ''}`
-  //   );
-  // }, [date, searchValue, direction]);
+  useEffect(() => {
+    navigate.push(
+      `/${direction}?date=${date}${searchValue ? `&search=${searchValue}` : ''}`
+    );
+  }, [date, searchValue, direction]);
 
   const getToday = moment(new Date()).format('DD/MM');
   const getYesterday = moment(new Date(new Date().setDate(new Date().getDate() - 1))).format(
