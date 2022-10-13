@@ -1,7 +1,17 @@
 import moment from 'moment';
 
 const baseUrl = 'https://api.iev.aero/api/flights';
-// let currentDate = moment(new Date()).format('DD-MM-YYYY');
+
+export const fetchFlightList = async date => {
+  const currentDate = moment(new Date()).format('DD-MM-YYYY');
+  const response = await fetch(`${baseUrl}/${currentDate}`);
+  if (response.ok) {
+    return response.json();
+  }
+  return [];
+};
+
+
 
 // export const fetchFlightList = (currentDate) => {
 //   fetch(`${baseUrl}/${currentDate}`).then((res) => {
@@ -14,10 +24,3 @@ const baseUrl = 'https://api.iev.aero/api/flights';
 //   .catch(err => alert(err.message))
 // }
 
-export const fetchFlightList = async date => {
-  const response = await fetch(baseUrl);
-  if (response.ok) {
-    return response.json();
-  }
-  return [];
-};

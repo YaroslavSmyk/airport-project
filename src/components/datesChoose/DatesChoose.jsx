@@ -1,39 +1,47 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route, useLocation, useNavigate } from 'react-router-dom';
+import { Switch, Route, useLocation, useNavigate, useHistory } from 'react-router-dom';
 import './datesChoose.scss';
 import moment from 'moment';
 import ButtonDay from './ButtonDay';
-// import  { fetchFlightList }  from './gateway/Gateway';
+import { getFlightsList } from '../../gateway/flights.actions';
 
 const DatesChoose = () => {
   const [direction, setDirection] = useState('');
-  const [date, setDate] = useState(moment(new Date()).format('YYYY-MM-DD'));
+  const [date, setDate] = useState(moment(new Date()).format('DD-MM-YYYY'));
   const [searchValue, setSearchValue] = useState('');
-
+  const history = useHistory();
   const navigate = useLocation();
+  const { search, pathname } = useLocation();
+
 
   const dateChangeHandler = event => {
     setDate(event.target.value);
     setSearchValue('');
-    navigate(`/${direction}?date=${date}${searchValue ? `&search=${searchValue}` : ''}`);
+    // navigate(`/${direction}?date=${date}${searchValue ? `&search=${searchValue}` : ''}`);
   };
-  console.log(date);
 
   const dayButtonClickHandler = event => {
     setDate(event.target.closest('button').dataset.day);
     setSearchValue('');
   };
-  console.log(dataset);
 
+  
   useEffect(() => {
-    fetchFlightList(date);
-  }, [date]);
-
-  useEffect(() => {
-    navigate.push(
+    history.push(
       `/${direction}?date=${date}${searchValue ? `&search=${searchValue}` : ''}`
-    );
-  }, [date, searchValue, direction]);
+      );
+      
+    }, [date, searchValue, direction]);
+
+      
+  // useEffect(() => {
+  //   const newPath = (direction, date, searchValue) =>
+  //     navigate(`/${direction}?date=${date}${searchValue ? `&search=${searchValue}` : ''}`);
+  //     }, [date, searchValue, direction]);
+    
+    // useEffect(() => {
+    //   getFlightsList(date);
+    // }, [date]);
 
   const getToday = moment(new Date()).format('DD/MM');
   const getYesterday = moment(new Date(new Date().setDate(new Date().getDate() - 1))).format(
