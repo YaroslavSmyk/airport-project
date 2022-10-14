@@ -11,12 +11,11 @@ import moment from 'moment';
 
 const FlightsSchedule = ({ getFlightsList, flightsList, getFilteredFlightsList }) => {
   const { direction } = useParams();
+  // const [date, setDate] = useState(moment(new Date()).format('YYYY-MM-DD'));
 
-  console.log('direction', direction);
   const search = useLocation();
   const querySearch = qs.parse(search.search, { ignoreQueryPrefix: true }).search;
 
-  console.log(flightsList);
   useEffect(() => {
     getFlightsList(direction);
   }, [direction]);
@@ -43,7 +42,8 @@ const FlightsSchedule = ({ getFlightsList, flightsList, getFilteredFlightsList }
       </thead>
       <tbody>
         {flightsList
-          .slice()
+        .filter(flight => moment(flight.timeToStand).format("DD-MM-YYYY") ===
+        moment(new Date()).format("DD-MM-YYYY"))
           .sort((a, b) => new Date(a.timeToStand) - new Date(b.timeToStand))
           .map((flight) => (
             <FlightsInfo key={flight.ID} flight={flight} />

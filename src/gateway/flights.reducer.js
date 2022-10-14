@@ -1,16 +1,10 @@
 import { GET_FILTERED_FLIGHTS_LIST, FLIGHTS_LIST_RECIEVED } from './flights.actions';
 
 const initialState = {
-  flightsList: [],
+  flightsList: null,
   flightNumber: null,
 };
 
-// const initialState = {
-//   flights: {
-//     arrival: [],
-//     departure: [],
-//   },
-// };
 
 const flightsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -29,21 +23,5 @@ const flightsReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-// const flightsReducer = (state = initialState, action) => {
-//   switch (action.type) {
-//     default:
-//       return state;
-
-//     case FLIGHTS_LIST_RECIEVED:
-//       return {
-//         ...state,
-//         flights: {
-//           arrival: action.payload.arrival,
-//           departure: action.payload.departure,
-//         },
-//       };
-//   }
-// };
 
 export default flightsReducer;

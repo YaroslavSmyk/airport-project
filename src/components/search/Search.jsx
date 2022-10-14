@@ -5,9 +5,6 @@ import { useState } from 'react';
 import qs from 'qs';
 
 const Search = () => {
-  // const history = useNavigate();
-  // console.log(history);
-
   const { search, pathname } = useLocation();
   console.log(search);
 

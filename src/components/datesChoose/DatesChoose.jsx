@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Switch, Route, useLocation, useNavigate, useHistory } from 'react-router-dom';
 import './datesChoose.scss';
 import moment from 'moment';
-import ButtonDay from './ButtonDay';
 import { getFlightsList } from '../../gateway/flights.actions';
 
-const DatesChoose = () => {
+const DatesChoose = ({date, setDate}) => {
   const [direction, setDirection] = useState('');
-  const [date, setDate] = useState(moment(new Date()).format('DD-MM-YYYY'));
+  // const [date, setDate] = useState(moment(new Date()).format('DD-MM-YYYY'));
   const [searchValue, setSearchValue] = useState('');
   const history = useHistory();
   const navigate = useLocation();
@@ -17,7 +16,6 @@ const DatesChoose = () => {
   const dateChangeHandler = event => {
     setDate(event.target.value);
     setSearchValue('');
-    // navigate(`/${direction}?date=${date}${searchValue ? `&search=${searchValue}` : ''}`);
   };
 
   const dayButtonClickHandler = event => {
@@ -25,7 +23,6 @@ const DatesChoose = () => {
     setSearchValue('');
   };
 
-  
   useEffect(() => {
     history.push(
       `/${direction}?date=${date}${searchValue ? `&search=${searchValue}` : ''}`
@@ -33,29 +30,19 @@ const DatesChoose = () => {
       
     }, [date, searchValue, direction]);
 
-      
-  // useEffect(() => {
-  //   const newPath = (direction, date, searchValue) =>
-  //     navigate(`/${direction}?date=${date}${searchValue ? `&search=${searchValue}` : ''}`);
-  //     }, [date, searchValue, direction]);
-    
-    // useEffect(() => {
-    //   getFlightsList(date);
-    // }, [date]);
-
-  const getToday = moment(new Date()).format('DD/MM');
+  const getToday = moment(new Date()).format('DD/MM/YYYY');
   const getYesterday = moment(new Date(new Date().setDate(new Date().getDate() - 1))).format(
-    'DD/MM',
+    'DD/MM/YYYY',
   );
   const getTomorrow = moment(new Date(new Date().setDate(new Date().getDate() + 1))).format(
-    'DD/MM',
+    'DD/MM/YYYY',
   );
 
   return (
     <div>
       <div className="dates">
-        <span className="date-value">{moment(date).format('DD/MM')}</span>
-        <input className="dates__input" type="date" onChange={dateChangeHandler} />
+        <span className="date-value">{moment(date).format('DD/MM/YYYY')}</span>
+        <input className="dates__input" type="date" name="date" onChange={dateChangeHandler} />
 
         <div className="dates__day">
           <span className="dates__day-title" onClick={dayButtonClickHandler}>
@@ -79,26 +66,5 @@ const DatesChoose = () => {
       </div>
     );
   };
-
-        {/* <div className="dates__day-title">
-        <ButtonDay
-          date={date}
-          buttonDate={getYesterday}
-          day="Yesterday"
-          dayButtonClickHandler={dayButtonClickHandler}
-        />
-        <ButtonDay
-          date={date}
-          buttonDate={getToday}
-          day="Today"
-          dayButtonClickHandler={dayButtonClickHandler}
-        />
-        <ButtonDay
-          date={date}
-          buttonDate={getTomorrow}
-          day="Tomorrow"
-          dayButtonClickHandler={dayButtonClickHandler}
-        />
-      </div> */}
 
 export default DatesChoose;
