@@ -2,22 +2,30 @@ import React, { useState, useEffect } from 'react';
 import { Switch, Route, useLocation, useNavigate } from 'react-router-dom';
 import './datesChoose.scss';
 import moment from 'moment';
+import qs from 'qs';
 // import  { fetchFlightList }  from './gateway/Gateway';
 
-const DatesChoose = () => {
+const DatesChoose = ({ getFlightsList }) => {
+  const { search } = useLocation();
   const [direction, setDirection] = useState('');
-  const [date, setDate] = useState(moment(new Date()).format('YYYY-MM-DD'));
-  const [searchValue, setSearchValue] = useState('');
+  // const [date, setDate] = useState(moment(new Date()).format('YYYY-MM-DD'));
+  const [date, setDate] = useState();
+
+  // const [searchValue, setSearchValue] = useState('');
 
   const navigate = useNavigate();
-console.log(navigate);
 
+  const dateChangeHandler = date => {
+    const formatedDate = moment(date).format('DD-MM-YYYY');
+    setDate(formatedDate);
+    const params = qs.stringify({ date: formatedDate });
+    navigate(`/departures?${params}`);
+    getFlightsList(formatedDate);
 
-  const dateChangeHandler = event => {
-    setDate(event.target.value);
-    setSearchValue('');
-    console.log(direction);
-    navigate(`/${direction}?date=${date}${searchValue ? `&search=${searchValue}` : ''}`)
+    // setDate(event.target.value);
+    // setSearchValue('');
+    // console.log(direction);
+    // navigate(`/${direction}?date=${date}${searchValue ? `&search=${searchValue}` : ''}`)
   };
   console.log(date);
 
@@ -43,7 +51,11 @@ console.log(navigate);
     <div>
       <div className="dates">
         <span className="date-value">{moment(date).format('DD/MM')}</span>
-        <input className="dates__input" type="date" onChange={dateChangeHandler} />
+        <input
+          className="dates__input"
+          type="date"
+          onInput={event => dateChangeHandler(event.target.value)}
+        />
         {/* <div className="dates__days"> */}
         <div className="dates__day">
           <span className="dates__day-title">{getYesterday}</span>

@@ -23,7 +23,7 @@ const DirectionButtons = () => {
           <i className="fa-solid fa-plane flights-navigation__icon flights-navigation__icon_arrivals" />
         </button>
       </Link>
-      <DatesChoose />
+      {/* <DatesChoose /> */}
       <Routes>
         <Route path="/:direction" element={<FlightsSchedule />} />
       </Routes>

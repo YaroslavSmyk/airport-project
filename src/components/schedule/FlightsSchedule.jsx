@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, useLocation, useParams } from 'react-router-dom';
-import qs from 'qs';
 import './flightsSchedule.scss';
 import * as flightsAction from '../../gateway/flights.actions';
 import { connect } from 'react-redux';
@@ -8,28 +7,35 @@ import { filteredFlightsListSelector, filterListSelector } from '../../gateway/f
 import PropTypes from 'prop-types';
 import FlightsInfo from '../flightsInfo/FlightsInfo';
 import moment from 'moment';
+import DatesChoose from '../datesChoose/DatesChoose';
+
+const qs = require('qs');
 
 const FlightsSchedule = ({ getFlightsList, flightsList, getFilteredFlightsList }) => {
   const { direction } = useParams();
 
   console.log('direction', direction);
   const search = useLocation();
+  console.log('search', search)
+  const { date } = qs.parse(search.search.replace('?', '')); 
   const querySearch = qs.parse(search.search, { ignoreQueryPrefix: true }).search;
 
   console.log(flightsList);
   useEffect(() => {
-    getFlightsList(direction);
+    getFlightsList(direction, date);
   }, [direction]);
 
   useEffect(() => {
     getFilteredFlightsList(querySearch);
   }, [querySearch]);
 
-  if (flightsList.length === 0) {
-    return <h2 className="no-flights">No flights</h2>;
-  }
+  // if (flightsList.length === 0) {
+  //   return <h2 className="no-flights">No flights</h2>;
+  // }
 
   return (
+    <>
+      <DatesChoose getFlightsList={getFlightsList}/>
     <table className="table">
       <thead>
         <tr>
@@ -50,6 +56,7 @@ const FlightsSchedule = ({ getFlightsList, flightsList, getFilteredFlightsList }
           ))}
       </tbody>
     </table>
+    </>
   );
 };
 
