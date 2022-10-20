@@ -1,11 +1,35 @@
-import React from 'react';
-import { Link, Route, Routes, useLocation } from 'react-router-dom';
+import { Link, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import DatesChoose from '../datesChoose/DatesChoose';
 import FlightsSchedule from '../schedule/FlightsSchedule';
 import './directionButtons.scss';
+import * as flightsAction from '../../gateway/flights.actions';
+import { connect } from 'react-redux';
+import { filteredFlightsListSelector, filterListSelector } from '../../gateway/flights.selectors';
+import PropTypes from 'prop-types';
+import moment from 'moment';
+const qs = require('qs');
+import React, { useEffect } from 'react';
 
-const DirectionButtons = () => {
-  const { pathname } = useLocation();
+
+const DirectionButtons = ({ getFlightsList, flightsList, getFilteredFlightsList }) => {
+  const { search, pathname } = useLocation();
+  console.log('search', search);
+  console.log('pathname', pathname)
+  const { direction } = useParams();
+
+  console.log('direction', direction)
+
+  const { date } = qs.parse(search.replace('?', '')); 
+  const querySearch = qs.parse(search, { ignoreQueryPrefix: true }).search;
+
+  console.log(flightsList);
+  useEffect(() => {
+    getFlightsList(direction, date);
+  }, [direction]);
+
+  useEffect(() => {
+    getFilteredFlightsList(querySearch);
+  }, [querySearch]);
 
   const departuresStylesBtn = pathname === '/departures' ? 'flights-board__btn_active' : '';
   const arrivalsStylesBtn = pathname === '/arrivals' ? 'flights-board__btn_active' : '';
@@ -23,12 +47,30 @@ const DirectionButtons = () => {
           <i className="fa-solid fa-plane flights-navigation__icon flights-navigation__icon_arrivals" />
         </button>
       </Link>
-      {/* <DatesChoose /> */}
+      <DatesChoose getFlightsList={getFlightsList}/>
       <Routes>
-        <Route path="/:direction" element={<FlightsSchedule />} />
+        <Route path="/:direction" element={<FlightsSchedule flightsList={flightsList}/>} />
       </Routes>
     </div>
   );
 };
 
-export default DirectionButtons;
+
+const mapDispatch = {
+  getFlightsList: flightsAction.getFlightsList,
+  getFilteredFlightsList: flightsAction.getFilteredFlightsList,
+};
+
+const mapState = state => ({
+  flightsNumber: filterListSelector(state),
+  flightsList: filteredFlightsListSelector(state),
+});
+
+DirectionButtons.propTypes = {
+  getFlightsList: PropTypes.func.isRequired,
+  flightsList: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  getFilteredFlightsList: PropTypes.func.isRequired,
+};
+
+export default connect(mapState, mapDispatch)(DirectionButtons);
+// export default DirectionButtons;

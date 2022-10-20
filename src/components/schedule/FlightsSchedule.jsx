@@ -11,31 +11,29 @@ import DatesChoose from '../datesChoose/DatesChoose';
 
 const qs = require('qs');
 
-const FlightsSchedule = ({ getFlightsList, flightsList, getFilteredFlightsList }) => {
+const FlightsSchedule = ({flightsList}) => {
   const { direction } = useParams();
 
   console.log('direction', direction);
-  const search = useLocation();
-  console.log('search', search)
-  const { date } = qs.parse(search.search.replace('?', '')); 
-  const querySearch = qs.parse(search.search, { ignoreQueryPrefix: true }).search;
+  // const search = useLocation();
+  // console.log('search', search)
+  // const { date } = qs.parse(search.search.replace('?', '')); 
+  // const querySearch = qs.parse(search.search, { ignoreQueryPrefix: true }).search;
 
-  console.log(flightsList);
-  useEffect(() => {
-    getFlightsList(direction, date);
-  }, [direction]);
+  // console.log(flightsList);
+  // useEffect(() => {
+  //   getFlightsList(direction, date);
+  // }, [direction]);
 
-  useEffect(() => {
-    getFilteredFlightsList(querySearch);
-  }, [querySearch]);
+  // useEffect(() => {
+  //   getFilteredFlightsList(querySearch);
+  // }, [querySearch]);
 
-  // if (flightsList.length === 0) {
-  //   return <h2 className="no-flights">No flights</h2>;
-  // }
+  if (flightsList.length === 0) {
+    return <h2 className="no-flights">No flights</h2>;
+  }
 
   return (
-    <>
-      <DatesChoose getFlightsList={getFlightsList}/>
     <table className="table">
       <thead>
         <tr>
@@ -56,24 +54,24 @@ const FlightsSchedule = ({ getFlightsList, flightsList, getFilteredFlightsList }
           ))}
       </tbody>
     </table>
-    </>
   );
 };
 
-const mapDispatch = {
-  getFlightsList: flightsAction.getFlightsList,
-  getFilteredFlightsList: flightsAction.getFilteredFlightsList,
-};
+// const mapDispatch = {
+//   getFlightsList: flightsAction.getFlightsList,
+//   getFilteredFlightsList: flightsAction.getFilteredFlightsList,
+// };
 
-const mapState = state => ({
-  flightsNumber: filterListSelector(state),
-  flightsList: filteredFlightsListSelector(state),
-});
+// const mapState = state => ({
+//   flightsNumber: filterListSelector(state),
+//   flightsList: filteredFlightsListSelector(state),
+// });
 
-FlightsSchedule.propTypes = {
-  getFlightsList: PropTypes.func.isRequired,
-  flightsList: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  getFilteredFlightsList: PropTypes.func.isRequired,
-};
+// FlightsSchedule.propTypes = {
+//   getFlightsList: PropTypes.func.isRequired,
+//   flightsList: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+//   getFilteredFlightsList: PropTypes.func.isRequired,
+// };
 
-export default connect(mapState, mapDispatch)(FlightsSchedule);
+// export default connect(mapState, mapDispatch)(FlightsSchedule);
+export default FlightsSchedule;
