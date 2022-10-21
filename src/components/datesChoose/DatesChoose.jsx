@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route, useLocation, useNavigate } from 'react-router-dom';
+import { Switch, Route, useLocation, useNavigate, useHistory } from 'react-router-dom';
 import './datesChoose.scss';
 import moment from 'moment';
 import qs from 'qs';
@@ -27,24 +27,25 @@ const DatesChoose = ({ getFlightsList }) => {
     // console.log(direction);
     // navigate(`/${direction}?date=${date}${searchValue ? `&search=${searchValue}` : ''}`)
   };
-  console.log(date);
 
-  // useEffect(() => {
-  //   fetchFlightList(date);
-  // }, [date]);
+  const dayButtonClickHandler = event => {
+    setDate(event.target.closest('button').dataset.day);
+    setSearchValue('');
+  };
 
-  // useEffect(() => {
-  //   navigate.push(
-  //     `/${direction}?date=${date}${searchValue ? `&search=${searchValue}` : ''}`
-  //   );
-  // }, [date, searchValue, direction]);
+  useEffect(() => {
+    history.push(
+      `/${direction}?date=${date}${searchValue ? `&search=${searchValue}` : ''}`
+      );
+      
+    }, [date, searchValue, direction]);
 
-  const getToday = moment(new Date()).format('DD/MM');
+  const getToday = moment(new Date()).format('DD/MM/YYYY');
   const getYesterday = moment(new Date(new Date().setDate(new Date().getDate() - 1))).format(
-    'DD/MM',
+    'DD/MM/YYYY',
   );
   const getTomorrow = moment(new Date(new Date().setDate(new Date().getDate() + 1))).format(
-    'DD/MM',
+    'DD/MM/YYYY',
   );
 
   return (
@@ -58,21 +59,26 @@ const DatesChoose = ({ getFlightsList }) => {
         />
         {/* <div className="dates__days"> */}
         <div className="dates__day">
-          <span className="dates__day-title">{getYesterday}</span>
+          <span className="dates__day-title" onClick={dayButtonClickHandler}>
+            {getYesterday}
+          </span>
           <p>YESTERDAY</p>
         </div>
         <div className="dates__day">
-          <span className="dates__day-title">{getToday}</span>
+          <span className="dates__day-title" onClick={dayButtonClickHandler}>
+            {getToday}
+          </span>
           <p>TODAY</p>
         </div>
         <div className="dates__day">
-          <span className="dates__day-title">{getTomorrow}</span>
+          <span className="dates__day-title" onClick={dayButtonClickHandler}>
+            {getTomorrow}
+          </span>
           <p>TOMORROW</p>
         </div>
-        {/* </div> */}
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
 
 export default DatesChoose;

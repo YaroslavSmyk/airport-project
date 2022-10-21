@@ -39,7 +39,7 @@ const DirectionButtons = ({ getFlightsList, flightsList, getFilteredFlightsList 
         <i className="fa-solid fa-plane flights-navigation__icon flights-navigation__icon_departures" />
           Departures</button>
       </Link>
-      <Link to="arrivals">
+      <Link to="/arrivals">
         <button className={`button-direction ${arrivalsStylesBtn}`}>
           Arrivals
           <i className="fa-solid fa-plane flights-navigation__icon flights-navigation__icon_arrivals" />

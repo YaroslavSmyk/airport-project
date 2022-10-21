@@ -13,6 +13,7 @@ const qs = require('qs');
 
 const FlightsSchedule = ({flightsList}) => {
   const { direction } = useParams();
+  // const [date, setDate] = useState(moment(new Date()).format('YYYY-MM-DD'));
 
   console.log('direction', direction);
 
@@ -30,7 +31,8 @@ const FlightsSchedule = ({flightsList}) => {
       </thead>
       <tbody>
         {flightsList
-          .slice()
+        .filter(flight => moment(flight.timeToStand).format("DD-MM-YYYY") ===
+        moment(new Date()).format("DD-MM-YYYY"))
           .sort((a, b) => new Date(a.timeToStand) - new Date(b.timeToStand))
           .map((flight) => 
          <FlightsInfo key={flight.ID} flight={flight} />
