@@ -11,6 +11,9 @@ module.exports = (env, argv) => {
     output: {
       filename: 'bundle.js',
     },
+    experiments: {
+      topLevelAwait: true,
+    },
     module: {
       rules: [
         {

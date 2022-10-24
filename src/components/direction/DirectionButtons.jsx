@@ -24,8 +24,11 @@ const DirectionButtons = ({ getFlightsList, flightsList, getFilteredFlightsList 
 
   console.log(flightsList);
   useEffect(() => {
-    getFlightsList(direction, date);
-  }, [direction]);
+  getFlightsList('departures', date);
+}, [date]);
+
+console.log('flightsList', flightsList)
+
 
   useEffect(() => {
     getFilteredFlightsList(querySearch);

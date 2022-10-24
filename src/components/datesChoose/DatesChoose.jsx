@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route, useLocation, useNavigate } from 'react-router-dom';
+import { Switch, Route, useLocation, useNavigate, useHistory } from 'react-router-dom';
 import './datesChoose.scss';
 import moment from 'moment';
 import qs from 'qs';
@@ -11,7 +11,7 @@ const DatesChoose = ({ getFlightsList }) => {
   // const [date, setDate] = useState(moment(new Date()).format('YYYY-MM-DD'));
   const [date, setDate] = useState();
 
-  // const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState('');
 
   const navigate = useNavigate();
 
@@ -28,6 +28,20 @@ const DatesChoose = ({ getFlightsList }) => {
     // navigate(`/${direction}?date=${date}${searchValue ? `&search=${searchValue}` : ''}`)
   };
   console.log(date);
+
+  const dayButtonClickHandler = event => {
+    setDate(event.target.closest('button').dataset.day);
+    setSearchValue('');
+  };
+
+  useEffect(() => {
+    navigate(
+      `/${direction}?date=${date}${searchValue ? `&search=${searchValue}` : ''}`
+      );
+
+    }, [date, searchValue, direction]);
+
+
 
   // useEffect(() => {
   //   fetchFlightList(date);
@@ -58,15 +72,21 @@ const DatesChoose = ({ getFlightsList }) => {
         />
         {/* <div className="dates__days"> */}
         <div className="dates__day">
-          <span className="dates__day-title">{getYesterday}</span>
+        <span className="dates__day-title" onClick={dayButtonClickHandler}>
+            {getYesterday}
+          </span>
           <p>YESTERDAY</p>
         </div>
         <div className="dates__day">
-          <span className="dates__day-title">{getToday}</span>
+        <span className="dates__day-title" onClick={dayButtonClickHandler}>
+            {getToday}
+          </span>
           <p>TODAY</p>
         </div>
         <div className="dates__day">
-          <span className="dates__day-title">{getTomorrow}</span>
+        <span className="dates__day-title" onClick={dayButtonClickHandler}>
+            {getTomorrow}
+          </span>
           <p>TOMORROW</p>
         </div>
         {/* </div> */}

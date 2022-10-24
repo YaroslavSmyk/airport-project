@@ -15,6 +15,7 @@ const FlightsSchedule = ({flightsList}) => {
   const { direction } = useParams();
 
   console.log('direction', direction);
+  console.log(flightsList);
   // const search = useLocation();
   // console.log('search', search)
   // const { date } = qs.parse(search.search.replace('?', '')); 
@@ -49,9 +50,9 @@ const FlightsSchedule = ({flightsList}) => {
         {flightsList
           .slice()
           .sort((a, b) => new Date(a.timeToStand) - new Date(b.timeToStand))
-          .map((flight) => (
-            <FlightsInfo key={flight.ID} flight={flight} />
-          ))}
+          .map((flight) => 
+          <FlightsInfo key={flight.ID} flight={flight} />
+        )}
       </tbody>
     </table>
   );

@@ -15,10 +15,23 @@ const baseUrl = 'https://api.iev.aero/api/flights';
 // }
 
 
-export const fetchFlightList = async(currentDate) => {
- const response = await fetch(`${baseUrl}/${currentDate}`)
+// export const fetchFlightList = async(currentDate) => {
+//  const response = await fetch(`${baseUrl}/${currentDate}`)
+//     if (response.ok) {
+//       return response.json();
+//     }
+//     return [];
+//   };
+
+export const fetchFlightList = (direction, currentDay) =>
+  // console.log('fetch direction', direction);
+// console.log(currentDay);
+fetch(`${baseUrl}/${currentDay}`)
+  .then(response => {
     if (response.ok) {
+      // console.log('ok');
+      // console.log(response.json());
       return response.json();
-    }
-    return [];
-  };
+    } throw new Error('Failed to load data flights');
+  })
+  .then(dataFlights => dataFlights.body[`${direction.slice(0, -1)}`]);
