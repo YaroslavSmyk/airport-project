@@ -13,16 +13,12 @@ import React, { useEffect } from 'react';
 
 const DirectionButtons = ({ getFlightsList, flightsList, getFilteredFlightsList }) => {
   const { search, pathname } = useLocation();
-  console.log('search', search);
-  console.log('pathname', pathname)
-  const { direction } = useParams();
 
-  console.log('direction', direction)
-
+  
   const { date } = qs.parse(search.replace('?', '')); 
+  console.log(date) //04-01-2022
   const querySearch = qs.parse(search, { ignoreQueryPrefix: true }).search;
-
-  console.log(flightsList);
+  
   useEffect(() => {
   getFlightsList('departures', date);
 }, [date]);
@@ -44,7 +40,7 @@ console.log('flightsList', flightsList)
         <i className="fa-solid fa-plane flights-navigation__icon flights-navigation__icon_departures" />
           Departures</button>
       </Link>
-      <Link to="arrivals">
+      <Link to="/arrivals">
         <button className={`button-direction ${arrivalsStylesBtn}`}>
           Arrivals
           <i className="fa-solid fa-plane flights-navigation__icon flights-navigation__icon_arrivals" />
@@ -76,4 +72,4 @@ DirectionButtons.propTypes = {
 };
 
 export default connect(mapState, mapDispatch)(DirectionButtons);
-// export default DirectionButtons;
+

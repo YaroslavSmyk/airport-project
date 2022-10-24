@@ -27,7 +27,6 @@ const DatesChoose = ({ getFlightsList }) => {
     // console.log(direction);
     // navigate(`/${direction}?date=${date}${searchValue ? `&search=${searchValue}` : ''}`)
   };
-  console.log(date);
 
   const dayButtonClickHandler = event => {
     setDate(event.target.closest('button').dataset.day);
@@ -47,18 +46,19 @@ const DatesChoose = ({ getFlightsList }) => {
   //   fetchFlightList(date);
   // }, [date]);
 
-  // useEffect(() => {
-  //   navigate.push(
-  //     `/${direction}?date=${date}${searchValue ? `&search=${searchValue}` : ''}`
-  //   );
-  // }, [date, searchValue, direction]);
+  useEffect(() => {
+    history.push(
+      `/${direction}?date=${date}${searchValue ? `&search=${searchValue}` : ''}`
+      );
+      
+    }, [date, searchValue, direction]);
 
-  const getToday = moment(new Date()).format('DD/MM');
+  const getToday = moment(new Date()).format('DD/MM/YYYY');
   const getYesterday = moment(new Date(new Date().setDate(new Date().getDate() - 1))).format(
-    'DD/MM',
+    'DD/MM/YYYY',
   );
   const getTomorrow = moment(new Date(new Date().setDate(new Date().getDate() + 1))).format(
-    'DD/MM',
+    'DD/MM/YYYY',
   );
 
   return (
@@ -89,10 +89,9 @@ const DatesChoose = ({ getFlightsList }) => {
           </span>
           <p>TOMORROW</p>
         </div>
-        {/* </div> */}
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
 
 export default DatesChoose;

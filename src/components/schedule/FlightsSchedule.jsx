@@ -13,6 +13,7 @@ const qs = require('qs');
 
 const FlightsSchedule = ({flightsList}) => {
   const { direction } = useParams();
+  // const [date, setDate] = useState(moment(new Date()).format('YYYY-MM-DD'));
 
   console.log('direction', direction);
   console.log(flightsList);
@@ -48,7 +49,8 @@ const FlightsSchedule = ({flightsList}) => {
       </thead>
       <tbody>
         {flightsList
-          .slice()
+        .filter(flight => moment(flight.timeToStand).format("DD-MM-YYYY") ===
+        moment(new Date()).format("DD-MM-YYYY"))
           .sort((a, b) => new Date(a.timeToStand) - new Date(b.timeToStand))
           .map((flight) => 
           <FlightsInfo key={flight.ID} flight={flight} />
@@ -58,21 +60,4 @@ const FlightsSchedule = ({flightsList}) => {
   );
 };
 
-// const mapDispatch = {
-//   getFlightsList: flightsAction.getFlightsList,
-//   getFilteredFlightsList: flightsAction.getFilteredFlightsList,
-// };
-
-// const mapState = state => ({
-//   flightsNumber: filterListSelector(state),
-//   flightsList: filteredFlightsListSelector(state),
-// });
-
-// FlightsSchedule.propTypes = {
-//   getFlightsList: PropTypes.func.isRequired,
-//   flightsList: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-//   getFilteredFlightsList: PropTypes.func.isRequired,
-// };
-
-// export default connect(mapState, mapDispatch)(FlightsSchedule);
 export default FlightsSchedule;

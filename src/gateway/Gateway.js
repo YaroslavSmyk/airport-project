@@ -14,6 +14,13 @@ const baseUrl = 'https://api.iev.aero/api/flights';
 //   .catch(err => alert(err.message))
 // }
 
+// export const fetchFlightList = async(direction, currentDate) => {
+// const response = await fetch(`${baseUrl}/${currentDate}`);
+//     if (response.ok) {
+//       return response.json();
+//     }
+//     return []
+//   }
 
 // export const fetchFlightList = async(currentDate) => {
 //  const response = await fetch(`${baseUrl}/${currentDate}`)
