@@ -46,12 +46,12 @@ const DatesChoose = ({ getFlightsList }) => {
   //   fetchFlightList(date);
   // }, [date]);
 
-  useEffect(() => {
-    history.push(
-      `/${direction}?date=${date}${searchValue ? `&search=${searchValue}` : ''}`
-      );
+  // useEffect(() => {
+  //   navigate(
+  //     `/${direction}?date=${date}${searchValue ? `&search=${searchValue}` : ''}`
+  //     );
       
-    }, [date, searchValue, direction]);
+  //   }, [date, searchValue, direction]);
 
   const getToday = moment(new Date()).format('DD/MM/YYYY');
   const getYesterday = moment(new Date(new Date().setDate(new Date().getDate() - 1))).format(

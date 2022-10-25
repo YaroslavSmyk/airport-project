@@ -1,6 +1,5 @@
 import moment from 'moment';
 
-const baseUrl = 'https://api.iev.aero/api/flights';
 // let currentDate = moment(new Date()).format('DD-MM-YYYY');
 
 // export const fetchFlightList = (currentDate) => {
@@ -29,16 +28,15 @@ const baseUrl = 'https://api.iev.aero/api/flights';
 //     }
 //     return [];
 //   };
+const baseUrl = 'https://api.iev.aero/api/flights';
+
 
 export const fetchFlightList = (direction, currentDay) =>
-  // console.log('fetch direction', direction);
-// console.log(currentDay);
-fetch(`${baseUrl}/${currentDay}`)
-  .then(response => {
-    if (response.ok) {
-      // console.log('ok');
-      // console.log(response.json());
-      return response.json();
-    } throw new Error('Failed to load data flights');
-  })
-  .then(dataFlights => dataFlights.body[`${direction.slice(0, -1)}`]);
+  fetch(`${baseUrl}/${currentDay}`)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error('Failed to load data flights');
+    })
+    .then(dataFlights => dataFlights.body[`${direction.slice(0, -1)}`]);

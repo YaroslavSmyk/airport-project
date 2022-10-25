@@ -20,8 +20,8 @@ const DirectionButtons = ({ getFlightsList, flightsList, getFilteredFlightsList 
   const querySearch = qs.parse(search, { ignoreQueryPrefix: true }).search;
   
   useEffect(() => {
-  getFlightsList('departures', date);
-}, [date]);
+    getFlightsList('departures', date);
+  }, [date]);
 
 console.log('flightsList', flightsList)
 

@@ -1,7 +1,7 @@
 import { GET_FILTERED_FLIGHTS_LIST, FLIGHTS_LIST_RECIEVED } from './flights.actions';
 
 const initialState = {
-  flightsList: null,
+  flightsList: [],
   flightNumber: null,
 };
 

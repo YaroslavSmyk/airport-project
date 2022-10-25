@@ -11,6 +11,8 @@ const FlightsInfo = ({ flight }) => {
     status: null,
   });
 
+  // console.log(flight);
+
   const getTime = data => moment(new Date(data)).format('H:mm');
 
   useEffect(() => {
