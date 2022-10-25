@@ -1,91 +1,173 @@
-// * {
-//   box-sizing: border-box;
-//   margin: 0;
-//   padding: 0;
-// }
+// // * {
+// //   box-sizing: border-box;
+// //   margin: 0;
+// //   padding: 0;
+// // }
 
-.dates,
-.dates__days {
-  display: flex;
-  flex-wrap: wrap;
-  background-color: #fff;
-}
-
-.dates__input {
-  font-size: 60px;
-  width: 68px;
-  height: 60px;
-  border: none;
-  margin-top: 15px;
-  margin-right: 39px;
-  padding: 5px;
-  margin-left: -53px;
-  background: #1eb7ee;
-  // color:#fff;
-}
-
+// .dates,
 // .dates__days {
-//   flex-direction: row;
+//   display: flex;
+//   flex-wrap: wrap;
+//   background-color: #fff;
 // }
 
-.dates__day {
-  border-bottom: 3px solid #b8b9b9;
-  color: #b8b9b9;
-  cursor: pointer;
+// .dates__input {
+//   font-size: 60px;
+//   width: 68px;
+//   height: 60px;
+//   border: none;
+//   margin-top: 15px;
+//   margin-right: 39px;
+//   padding: 5px;
+//   margin-left: -53px;
+//   background: #1eb7ee;
+//   // color:#fff;
+// }
+
+// // .dates__days {
+// //   flex-direction: row;
+// // }
+
+// .dates__day {
+//   border-bottom: 3px solid #b8b9b9;
+//   color: #b8b9b9;
+//   cursor: pointer;
+//   display: flex;
+//   flex-direction: column;
+//   font-weight: 700;
+//   height: 40px;
+//   padding: 20px 0px 55px;
+//   text-align: center;
+//   width: 100px;
+
+//   &:hover{
+//     color: #1eb7ee;
+//   border-bottom: 3px solid #1eb7ee;
+
+//   }
+// }
+
+// .dates__day-title {
+//   border-bottom: 2px;
+//   font-size: 14px;
+//   font-weight: 400;
+// }
+
+// .dates__title {
+//   background: #1eb7ee;
+//   border-radius: 20px 20px 50px 50px;
+//   color: #fff;
+//   font-size: 18px;
+//   font-weight: 700;
+//   margin: 15px;
+//   padding: 15px;
+// }
+// .date-value {
+//   font-weight: 700;
+//   margin-left: 40px;
+//   margin-top: -2px;
+// }
+
+// // .search__clear {
+// //   position: relative;
+// //   top: -50px;
+// //   width: 100%;
+// // }
+
+// // .search__clear-right {
+// //   background: #1eb7ee;
+// //   border: 0.2rem solid;
+// //   border-radius: 25px 25px 0 0;
+// //   color: #fff;
+// //   cursor: pointer;
+// //   font-size: 16px;
+// //   font-weight: 700;
+// //   min-height: 50px;
+// //   outline: none;
+// //   padding: 0 20px;
+// //   position: absolute;
+// //   right: 0;
+// //   transition: border-radius 0.5s;
+// // }
+
+
+.dates {
   display: flex;
-  flex-direction: column;
-  font-weight: 700;
-  height: 40px;
-  padding: 20px 0px 55px;
-  text-align: center;
-  width: 100px;
+  justify-self: central;
+  flex-wrap: wrap;
+  background: #fff;
 
-  &:hover{
-    color: #1eb7ee;
-  border-bottom: 3px solid #1eb7ee;
+  padding: 20px 10px;
+  width: 100%;
+  &__days {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: 14px;
+  }
 
+  &__input:hover {
+    background-color: #1eb7ee;
+  }
+
+  &__input {
+    margin-right: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+
+    &::-webkit-datetime-edit {
+      display: none;
+    }
+
+    &::-webkit-calendar-picker-indicator {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__day {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 3px solid #b8b9b9;
+    width: 100px;
+
+    height: 40px;
+    color: #b8b9b9;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    &-title {
+      font-size: 14px;
+      font-weight: normal;
+      border-bottom: 2px;
+    }
+  }
+  &__title {
+    font-size: 18px;
+    background: #1eb7ee;
+    font-weight: 700;
+    /*border-radius: 20px 20px 50px 50px;*/
+    color: #fff;
+    margin: 15px;
+    padding: 15px;
   }
 }
-
-.dates__day-title {
-  border-bottom: 2px;
-  font-size: 14px;
-  font-weight: 400;
+.active {
+  color: #1eb7ee;
+  border-color: #1eb7ee;
 }
 
-.dates__title {
-  background: #1eb7ee;
-  border-radius: 20px 20px 50px 50px;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 700;
-  margin: 15px;
-  padding: 15px;
-}
 .date-value {
   font-weight: 700;
-  margin-left: 40px;
+  margin-right: 40px;
   margin-top: -2px;
+  text-align: center;
 }
-
-// .search__clear {
-//   position: relative;
-//   top: -50px;
-//   width: 100%;
-// }
-
-// .search__clear-right {
-//   background: #1eb7ee;
-//   border: 0.2rem solid;
-//   border-radius: 25px 25px 0 0;
-//   color: #fff;
-//   cursor: pointer;
-//   font-size: 16px;
-//   font-weight: 700;
-//   min-height: 50px;
-//   outline: none;
-//   padding: 0 20px;
-//   position: absolute;
-//   right: 0;
-//   transition: border-radius 0.5s;
-// }
+.calendar {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  align-items: center;
+}

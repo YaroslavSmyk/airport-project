@@ -30,7 +30,6 @@ import moment from 'moment';
 //   };
 const baseUrl = 'https://api.iev.aero/api/flights';
 
-
 export const fetchFlightList = (direction, currentDay) =>
   fetch(`${baseUrl}/${currentDay}`)
     .then(response => {
