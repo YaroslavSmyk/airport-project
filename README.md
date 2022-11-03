@@ -3,15 +3,15 @@
 #### You can find the project by link:
 ## https://sikorsky-airport.netlify.app/
 
-### In the project directory, you can run:
+#### In the project directory, you can run:
 
-### npm start
+#### npm start
 
-### Runs the app in the development mode. If you make edits the page will reload.
+#### Runs the app in the development mode. If you make edits the page will reload.
 
-### npm run build
+#### npm run build
 
-### Builds the app for production to the build folder.
+#### Builds the app for production to the build folder.
 
 ## The tech stack is:
 ### [HTML5](https://en.wikipedia.org/wiki/HTML5)
