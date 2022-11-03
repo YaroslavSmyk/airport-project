@@ -1,0 +1,82 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__icon {
+    margin: 20px;
+
+    &_departures {
+      transform: rotate(-90deg);
+    }
+
+    &_arrivals {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__button {
+    width: 50%;
+    height: 60px;
+    border-radius: 60px 60px 0px 0px;
+
+    &:hover {
+      transition: border-radius 0.5s;
+      border-radius: 20px 20px 0px 0px;
+    }
+  }
+  &__date {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+  }
+  &__date-value {
+    font-weight: 700;
+  }
+
+  &__direction {
+    width: 100%;
+    background-color: #1fb7ee;
+    font-size: 20px;
+    height: 60px;
+    padding-bottom: 40px;
+    border-radius: 65px 65px 0px 0px;
+  }
+
+  &__date-calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+  }
+
+  &__date-input {
+    font-size: 60px;
+    width: 74px;
+    padding: 5px;
+    height: 74px;
+    border: none;
+
+    &::-webkit-datetime-edit {
+      display: none;
+    }
+  }
+
+  &__date-day {
+    border: none;
+    cursor: pointer;
+    background-color: #fff;
+    outline: none;
+    padding: 20px;
+    color: #323232;
+    border-bottom: 3px solid grey;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    &_active {
+      color: #1fb7ee;
+      border-bottom: 3px solid #1fb7ee;
+    }
+  }
+}

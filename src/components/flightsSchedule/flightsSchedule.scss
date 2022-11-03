@@ -1,0 +1,30 @@
+.table {
+  width: 100%;
+  background-color: #fff;
+  border-collapse: collapse;
+
+  &__flights {
+    opacity: 0.9;
+  }
+  &__header {
+    opacity: 0.7;
+  }
+
+
+  &__flight {
+    position: relative;
+
+    &_odd {
+      background-color: #e8efec;
+    }
+
+    &:hover {
+      z-index: 2;
+      box-shadow: 0 0 8px 2px #b6b8b6;
+    }
+  }
+
+  &__element {
+    padding: 20px;
+  }
+}

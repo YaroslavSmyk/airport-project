@@ -1,65 +1,58 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import React from 'react';
+import './flightsInfo.scss';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import FlightsSchedule from '../schedule/FlightsSchedule';
 
-const FlightsInfo = ({ flight }) => {
-  const { pathname } = useLocation();
-  const [time, setTime] = useState({
-    localTime: [],
-    status: null,
-  });
 
-  // console.log(flight);
+const FlightsInfo = ({ flight, index }) => {
+  const { airline, actual, term, status, codeShareData } = flight;
 
-  const getTime = data => moment(new Date(data)).format('H:mm');
+  const flightDestination = flight['airportToID.city_en']
+    ? flight['airportToID.city_en']
+    : flight['airportFromID.city_en'];
 
-  useEffect(() => {
-    const arrivalStatus = flight.timeLandFact
-      ? `Landend ${getTime(flight.timeLandFact)}`
-      : `Schedule ${getTime(flight.timeLandCalc)}`;
+  let terminalColor;
+  if (term === 'A') {
+    terminalColor = '#63c745';
+  } else if (term === 'B') {
+    terminalColor = '#d16aae';
+  } else terminalColor = '#1eb7ee';
 
-    const departureStatus = flight.timeTakeofFact
-      ? `Taked of ${getTime(flight.timeTakeofFact)}`
-      : `Schedule ${getTime(flight.timeDepExpectCalc)}`;
+  const terminaStyle = { color: terminalColor, borderColor: terminalColor };
 
-    const localeTimeArrival = getTime(flight.timeToStand);
-    const localeTimeDeparture = getTime(flight.timeDepShedule);
-
-    setTime({
-      localTime: pathname === '/departure' ? localeTimeDeparture : localeTimeArrival,
-      status: pathname === '/departure' ? departureStatus : arrivalStatus,
-    });
-  }, []);
-
-  const terminalName =
-    flight.term === 'A' ? 'terminal-name terminal-name_green' : 'terminal-name terminal-name_blue';
+  const classNames =
+    index % 2 === 1
+      ? 'table__flight table__flight_odd'
+      : 'table__flight';
 
   return (
-    <tr className="table-row">
-      <td className="terminal-field table-cell">
-        <span className={terminalName}>{flight.term}</span>
-      </td>
-      <td className="time-field">{time.localTime}</td>
-      <td className="city-field">
-        {flight['airportToID.city_en']}
-        {flight['airportFromID.city_en']}
-      </td>
-      <td className="status-field">{time.status}</td>
-      <td className="company">
-        <span className="company-field">
-          <img src={flight.airline.en.logoSmallName} width="60" height="40" alt="companyName" />
-          <p>{flight.airline.en.name}</p>
+    <tr className={classNames}>
+      <td className="table__element">
+        <span className="terminal" style={terminaStyle}>
+          {term}
         </span>
       </td>
-      <td className="flight-field">{flight.codeShareData[0].codeShare}</td>
+      <td className="table__element">
+        {moment(actual).format('h:mm a')}
+      </td>
+      <td className="table__element">{flightDestination}</td>
+      <td className="table__element">{status}</td>
+      <td className="table__element airline">
+        <img
+          className="airline__logo"
+          src={airline.en.logoName}
+          alt={airline.en.name}
+        />
+        {airline.en.name}
+      </td>
+      <td className="table__element">{codeShareData[0].codeShare}</td>
     </tr>
   );
 };
 
-FlightsInfo.propTypes = {
-  flight: PropTypes.shape().isRequired,
-};
-
 export default FlightsInfo;
+
+FlightsInfo.propTypes = {
+  flight: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
+};

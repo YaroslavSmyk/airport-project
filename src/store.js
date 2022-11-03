@@ -1,13 +1,16 @@
-import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
-import flightsReducer from './gateway/flights.reducer';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import airportBoardReducer from '../src/components/flights.reducer';
 
 const reducer = combineReducers({
-  flights: flightsReducer,
+  airportBoard: airportBoardReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
+const store = createStore(
+  reducer,
+  composeEnhancers(applyMiddleware(thunk))
+);
 
 export default store;

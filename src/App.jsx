@@ -1,23 +1,16 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Header from './components/header/Header';
-import Search from './components/search/Search';
-import DirectionButtons from './components/direction/DirectionButtons';
+import { BrowserRouter as Router } from 'react-router-dom';
 import store from './store';
-import DatesChoose from './components/datesChoose/DatesChoose';
+import FlightsBoard from './components/flightsBoard/FlightsBoard';
 
 const App = () => {
   return (
-    <>
-      <Provider store={store}>
-        <BrowserRouter>
-          <Header />
-          <Search />
-          <DirectionButtons />
-        </BrowserRouter>
-      </Provider>
-    </>
+    <Provider store={store}>
+      <Router>
+        <FlightsBoard />
+      </Router>
+    </Provider>
   );
 };
 

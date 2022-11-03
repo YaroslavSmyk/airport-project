@@ -1,48 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './search.scss';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import qs from 'qs';
 
-const Search = () => {
-  const { search, pathname } = useLocation();
-  console.log(search);
+const Search = ({ setSearchValue }) => {
+  const [valueInput, setValueInput] = useState('');
 
-  const querySearch = qs.parse(search, { ignoreQueryPrefix: true }).search;
-
-  const queryParams = querySearch ? querySearch : '';
-
-  const [dataSearch, setDataSearch] = useState(queryParams);
-
-  const onHandleSearch = (event) => {
-    event.preventDefault();
-    setDataSearch(event.target.value);
+  const onHandlerSearch = (event) => {
+    setValueInput(event.target.value);
   };
 
-  let path =
-    pathname === '/departures'
-      ? `/departures?search=${dataSearch}`
-      : `/arrivals?search=${dataSearch}`;
+  const handlerSearchFlightsList = () => {
+    setSearchValue(valueInput.toLowerCase());
+    setValueInput('');
+  };
 
   return (
-    <>
-      <div className="search__header">SEARCH FLIGHT</div>
-      <div className="search">
-        <i className="fas fa-search search__loop"></i>
+    <div className="flights-search">
+      <h1 className="flights-search__header">Search flight</h1>
+      <div className="flights-search__container">
+        <i className="fa-solid fa-magnifying-glass flights-search__icon" />
         <input
+          className="flights-search__input"
           type="text"
-          className="search__input"
-          placeholder="Flight #"
-          value={dataSearch.value}
-          onChange={onHandleSearch}
-        ></input>
-        <Link to={path}>
-          <button className="search__btn" type="submit">
-            SEARCH
-          </button>
-        </Link>
+          placeholder="Airline, destination or flight #"
+          value={valueInput}
+          onChange={onHandlerSearch}
+        />
       </div>
-    </>
+
+      <button
+        className="button flights-search__button"
+        onClick={handlerSearchFlightsList}
+      >
+        Search
+      </button>
+    </div>
   );
 };
 
